@@ -1,0 +1,94 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
+
+:root {
+  --color-orange: orange;
+  --color-rocket: #4c8ec1;
+}
+
+* {
+  margin: 0 30px;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  position: relative;
+  background: white;
+  color: #111;
+  font-family: "Roboto", sans-serif;
+}
+
+nav {
+  padding: 30px 0 0 0;
+}
+
+.links {
+  margin: 0;
+  display: flex;
+}
+
+.links a img {
+  margin: 0 90px 0 0;
+}
+
+.links a {
+  color: #111;
+  font-size: 16px;
+  line-height: 26px;
+  text-decoration: none;
+  margin: 0 30px;
+}
+
+.links a:hover {
+  color: var(--color-orange);
+  transition: color 200ms;
+}
+
+#wrapper {
+  position: relative;
+  display: grid;
+  border-radius: 30px;
+  background: #fbdfdb;
+  grid-template-columns: 1fr 1fr;
+}
+#wrapper div {
+  margin: 15% auto;
+}
+
+#wrapper div h1 {
+  font-size: 32x;
+  line-height: 38px;
+  font-weight: bold;
+}
+
+#wrapper div p {
+  opacity: 0.7;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+#wrapper img {
+  position: absolute;
+  height: 90%;
+  bottom: 0;
+  right: 10%;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  justify-content: center;
+  background: #eee;
+  color: #999;
+  height: 62px;
+}
+
+footer a {
+  font-size: 14px;
+  line-height: 24px;
+}
