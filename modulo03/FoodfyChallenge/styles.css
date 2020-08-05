@@ -17,7 +17,6 @@ body {
   color: #111;
   font-family: "Roboto", sans-serif;
 }
-
 nav {
   padding: 30px 0 0 0;
 }
@@ -72,6 +71,54 @@ nav {
   height: 90%;
   bottom: 0;
   right: 10%;
+}
+
+#more-accessed {
+  margin: 50px 0 20px 0;
+  padding: 0 30px;
+  text-align: left;
+}
+
+#more-accessed h1 {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 28px;
+}
+
+/* ===CARDS=== */
+.cards {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  text-align: left;
+  margin: 0;
+}
+
+.card__imaage-container img {
+  width: 100%;
+  border-radius: 15px;
+  margin: 0;
+}
+
+.card__content h1,
+h2 {
+  margin: 0;
+}
+
+.card__content h1 {
+  margin: 20px 0 5px 0;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.card__content h2 {
+  font-size: 14px;
+  line-height: 16px;
+  color: #777;
 }
 
 footer {
