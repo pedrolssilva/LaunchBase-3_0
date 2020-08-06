@@ -91,7 +91,6 @@ main {
 
 /* ===CARDS=== */
 .cards {
-  margin-bottom: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
@@ -125,10 +124,26 @@ h2 {
   color: #777;
 }
 
+.about-content h1 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.about-content h2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
 footer {
   display: flex;
   align-items: center;
-  margin: 0;
+  margin-top: 50px;
   width: 100%;
   justify-content: center;
   background: #eee;
