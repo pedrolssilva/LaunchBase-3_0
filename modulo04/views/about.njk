@@ -1,25 +1,21 @@
-{% extends "layout.html" %} {% block head %}
-<title>Sobre - Mayk Brito</title>
-{% endblock%} {% block content %}
+{% extends "layout.njk" %}
+{% block head %}
+  <title>Sobre - Mayk Brito</title>
+  {% endblock%}
+  {% block content %}
 
-<div id="wrapper">
-  <img
-    src="https://avatars2.githubusercontent.com/u/6643122?s=400&u=1e9e1f04b76fb5374e6a041f5e41dce83f3b5d92&v=4"
-    alt="Maik Brito"
-  />
-  <h1>Mayk Brito</h1>
-  <h2>Instrutor - Rocketseat</h2>
-  <p>
-    Programador full-stack, focado em trazer o melhor ensino para iniciantes em
-    programação. Colaborador da
-    <a target="_blank" href="https://rocketseat.com.br"> Rocketseat</a>
-  </p>
-</div>
+    <div id="wrapper">
+      <img src="{{about.avatar_url}}" alt="Imagem de {{about.avatar_url}}"/>
+      <h1>{{about.name}}</h1>
+      <h2>{{about.role}}</h2>
+      <p>{{about.description}}
+      </p>
+    </div>
 
-<div id="links-footer" class="links">
-  <a target="_blank" href="https://github.com/maykbrito/">GitHub</a>
-  <a target="_blank" href="https://twitter.com/maykbrito/">Twitter</a>
-  <a target="_blank" href="https://www.linkedin.com/in/maykbrito/">LinkedIn</a>
-</div>
+    <div id="links-footer" class="links">
+      {% for link in about.links %}
+        <a target="_blank" href="{{link.url}}">{{link.name}}</a>
+      {% endfor %}
+    </div>
 
-{% endblock %}
+  {% endblock %}
