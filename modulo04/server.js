@@ -11,6 +11,7 @@ server.set("view engine", "njk");
 nunjuncks.configure("views", {
   express: server,
   autoescape: false,
+  noCache: true,
 });
 
 server.get("/", function (req, res) {
