@@ -139,3 +139,39 @@ header {
   font-size: 12px;
   box-shadow: 4px 4px 6px -2px rgba(113, 89, 193, 0.6);
 }
+
+/* FORM */
+input,
+select {
+  margin-top: 4px;
+  width: 100%;
+  outline: none;
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+select {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+input[type="radio"] {
+  width: initial;
+  margin-right: 4px;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+button[type="submit"] {
+  padding: 8px 32px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  margin-top: 32px;
+  width: 100%;
+  font-size: 16px;
+}
