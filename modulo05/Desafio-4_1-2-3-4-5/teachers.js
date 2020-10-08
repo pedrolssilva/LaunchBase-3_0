@@ -2,6 +2,15 @@ const fs = require("fs");
 const data = require("./data.json");
 const { age, graduation, date } = require("./utils");
 
+//index
+exports.index = function (req, res) {
+  const teachers = data.teachers.map((teacher) => {
+    return { ...teacher, services: teacher.services.trim().split(",") };
+  });
+
+  return res.render("teachers/index", { teachers });
+};
+
 //show
 exports.show = function (req, res) {
   const { id } = req.params;
