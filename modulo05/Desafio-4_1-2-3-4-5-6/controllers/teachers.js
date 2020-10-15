@@ -1,6 +1,6 @@
 const fs = require("fs");
-const data = require("./data.json");
-const { age, graduation, date } = require("./utils");
+const data = require("../data.json");
+const { age, graduation, date } = require("../utils");
 
 //index
 exports.index = function (req, res) {
@@ -11,31 +11,12 @@ exports.index = function (req, res) {
   return res.render("teachers/index", { teachers });
 };
 
-//show
-exports.show = function (req, res) {
-  const { id } = req.params;
-  const foundTeacher = data.teachers.find(function (teacher) {
-    return teacher.id == id;
-  });
-
-  if (!foundTeacher) {
-    return res.send("Teacher not found!");
-  }
-
-  const teacher = {
-    ...foundTeacher,
-    age: age(foundTeacher.birth),
-    services: foundTeacher.services.trim().split(","),
-    graduation: graduation(foundTeacher.educationalLevel),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(
-      foundTeacher.created_at
-    ),
-  };
-
-  return res.render("teachers/show", { teacher });
+//create
+exports.create = function (req, res) {
+  return res.render("teachers/create");
 };
 
-//create
+//post
 exports.post = function (req, res) {
   const keys = Object.keys(req.body);
 
@@ -73,6 +54,30 @@ exports.post = function (req, res) {
 
     return res.redirect("/teachers");
   });
+};
+
+//show
+exports.show = function (req, res) {
+  const { id } = req.params;
+  const foundTeacher = data.teachers.find(function (teacher) {
+    return teacher.id == id;
+  });
+
+  if (!foundTeacher) {
+    return res.send("Teacher not found!");
+  }
+
+  const teacher = {
+    ...foundTeacher,
+    age: age(foundTeacher.birth),
+    services: foundTeacher.services.trim().split(","),
+    graduation: graduation(foundTeacher.educationalLevel),
+    created_at: new Intl.DateTimeFormat("pt-BR").format(
+      foundTeacher.created_at
+    ),
+  };
+
+  return res.render("teachers/show", { teacher });
 };
 
 //edit
