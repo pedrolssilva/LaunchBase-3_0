@@ -5,7 +5,7 @@ const { age, grade, date } = require("../utils");
 //index
 exports.index = function (req, res) {
   const students = data.students.map((student) => {
-    return { ...student /* , services: student.services.trim().split(",")  */ };
+    return { ...student, schoolPhase: grade(student.schoolPhase) };
   });
 
   return res.render("students/index", { students });
