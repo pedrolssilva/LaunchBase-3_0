@@ -5,7 +5,7 @@ const { age, graduation, date } = require("../utils");
 //index
 exports.index = function (req, res) {
   const students = data.students.map((student) => {
-    return { ...student, services: student.services.trim().split(",") };
+    return { ...student /* , services: student.services.trim().split(",")  */ };
   });
 
   return res.render("students/index", { students });
@@ -25,28 +25,20 @@ exports.post = function (req, res) {
       return res.send("Please, fill all fields");
     }
   }
-  let {
-    avatar_url,
-    name,
-    birth,
-    educationalLevel,
-    classType,
-    services,
-  } = req.body;
 
-  birth = Date.parse(birth);
-  const created_at = Date.now();
-  const id = Number(data.students.length + 1);
+  birth = Date.parse(req.body.birth);
+
+  let id = 1;
+  const lastStudent = data.students[data.students.length - 1];
+
+  if (lastStudent) {
+    id = lastStudent.id + 1;
+  }
 
   data.students.push({
     id,
-    avatar_url,
-    name,
+    ...req.body,
     birth,
-    educationalLevel,
-    classType,
-    services,
-    created_at,
   });
 
   fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
