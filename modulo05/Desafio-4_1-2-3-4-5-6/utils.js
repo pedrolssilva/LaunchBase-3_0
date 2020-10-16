@@ -24,6 +24,26 @@ module.exports = {
         return "Doutorado";
     }
   },
+  grade: function (value) {
+    switch (value) {
+      case "5F":
+        return "5º Fundamental";
+      case "6F":
+        return "6º Fundamental";
+      case "7F":
+        return "7º Fundamental";
+      case "8F":
+        return "8º Fundamental";
+      case "9F":
+        return "9º Fundamental";
+      case "1M":
+        return "1º Médio";
+      case "2M":
+        return "2º Médio";
+      case "3M":
+        return "3º Médio";
+    }
+  },
   date: function (timestamp) {
     const date = new Date(timestamp);
 
@@ -31,6 +51,12 @@ module.exports = {
     const month = `0${date.getUTCMonth() + 1}`.slice(-2);
     const day = `0${date.getUTCDate()}`.slice(-2);
 
-    return `${year}-${month}-${day}`;
+    return {
+      day,
+      month,
+      year,
+      iso: `${year}-${month}-${day}`,
+      birthDay: `${day}/${month}`,
+    };
   },
 };

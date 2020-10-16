@@ -1,6 +1,6 @@
 const fs = require("fs");
 const data = require("../data.json");
-const { age, graduation, date } = require("../utils");
+const { age, grade, date } = require("../utils");
 
 //index
 exports.index = function (req, res) {
@@ -62,11 +62,8 @@ exports.show = function (req, res) {
   const student = {
     ...foundStudent,
     age: age(foundStudent.birth),
-    services: foundStudent.services.trim().split(","),
-    graduation: graduation(foundStudent.educationalLevel),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(
-      foundStudent.created_at
-    ),
+    birth: date(foundStudent.birth).birthDay,
+    schoolPhase: grade(foundStudent.schoolPhase),
   };
 
   return res.render("students/show", { student });
@@ -86,7 +83,7 @@ exports.edit = function (req, res) {
 
   const student = {
     ...foundStudent,
-    birth: date(foundStudent.birth),
+    birth: date(foundStudent.birth).iso,
   };
 
   return res.render("students/edit", { student });

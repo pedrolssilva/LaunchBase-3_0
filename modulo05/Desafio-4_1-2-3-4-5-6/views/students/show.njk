@@ -2,45 +2,41 @@
 
 {% block content %}
   <div class="card">
-    <section class="avatar" style="background: url({{teacher.avatar_url}}) no-repeat center center / cover"></section>
+    <section class="avatar" style="background: url({{student.avatar_url}}) no-repeat center center / cover"></section>
     <section class="details">
       <h3>Detalhes</h3>
 
       <div class="item">
-        <div>Instrutor</div>
-        <div>{{teacher.name}}</div>
+        <div>Estudante</div>
+        <div>{{student.name}}</div>
+      </div>
+
+      <div class="item">
+        <div>Email</div>
+        <div>{{student.email}}</div>
       </div>
 
       <div class="item">
         <div>Idade</div>
-        <div>{{teacher.age}}</div>
+        <div>{{student.age}}</div>
       </div>
 
       <div class="item">
-        <div>Escolaridade</div>
-        <div>{{teacher.graduation}}</div>
+        <div>Aniversário</div>
+        <div>{{student.birth}}</div>
       </div>
 
       <div class="item">
-        <div>Tipo de aula</div>
-        <div>{{"À Distancia" if teacher.classType == "D" else "Presencial"}}</div>
+        <div>Ano escolar</div>
+        <div>{{student.schoolPhase}}</div>
       </div>
 
       <div class="item">
-        <div>Acompanhamento</div>
-        <div>
-          {% for service in teacher.services %}
-            <span>{{service}}</span>
-          {% endfor %}
-        </div>
+        <div>Carga horária semanal</div>
+        <div>{{student.workload}}</div>
       </div>
 
-      <div class="item">
-        <div>Desde</div>
-        <div>{{teacher.created_at}}</div>
-      </div>
-
-      <a class="button" href="/teachers/{{teacher.id}}/edit">Editar</a>
+      <a class="button" href="/students/{{student.id}}/edit">Editar</a>
     </section>
   </div>
 {% endblock content %}
