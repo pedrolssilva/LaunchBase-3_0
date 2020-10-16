@@ -83,7 +83,9 @@ exports.edit = function (req, res) {
 
   const student = {
     ...foundStudent,
+    age: age(foundStudent.birth),
     birth: date(foundStudent.birth).iso,
+    birthDat: date(foundStudent.birth).birthDay,
   };
 
   return res.render("students/edit", { student });
