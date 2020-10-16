@@ -248,3 +248,8 @@ tbody tr td:last-child a,
   font-size: 12px;
   border-radius: 4px;
 }
+
+.table-container > a {
+  margin-bottom: 16px;
+  display: inline-block;
+}
