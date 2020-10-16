@@ -1,8 +1,7 @@
-const cards = document.querySelectorAll(".card");
-
-for (let card of cards) {
-  card.addEventListener("click", function () {
-    const courseId = card.getAttribute("id");
-    window.location.href = `/contents/${courseId}`;
-  });
+const currentPage = location.pathname;
+const menuItems = document.querySelectorAll("Header .links a");
+for (item of menuItems) {
+  if (currentPage.includes(item.getAttribute("href"))) {
+    item.classList.add("active");
+  }
 }
