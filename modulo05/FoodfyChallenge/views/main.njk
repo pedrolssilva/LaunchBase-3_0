@@ -1,0 +1,83 @@
+{% extends "layout.njk"%}
+
+{% block content %}
+
+  <main>
+    <div id="wrapper">
+      <div>
+        <h1>As melhores receitas</h1>
+        <p>
+          Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.
+        </p>
+      </div>
+      <img src="./assets/chef.png" alt="chef"/>
+    </div>
+
+    <div id="more-accessed">
+      <h1>Mais acessadas</h1>
+    </div>
+
+    <section class="cards">
+      <div class="card">
+        <div class="card__imaage-container">
+          <img src="assets/burger.png" alt="burguer"/>
+        </div>
+        <div class="card__content">
+          <h1 id="food-plate">Triplo bacon burger</h1>
+          <h2 id="chef">por Jorge Relato</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__imaage-container">
+          <img src="assets/pizza.png" alt="pizza"/>
+        </div>
+        <div class="card__content">
+          <h1 id="food-plate">Pizza 4 estações</h1>
+          <h2 id="chef">por Fabiana Melo</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__imaage-container">
+          <img src="assets/espaguete.png" alt="espaguete"/>
+        </div>
+        <div class="card__content">
+          <h1 id="food-plate">Espaguete de alho</h1>
+          <h2 id="chef">por Júlia Kinoto</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__imaage-container">
+          <img src="assets/lasanha.png" alt="lasanha"/>
+        </div>
+        <div class="card__content">
+          <h1 id="food-plate">Lasanha mac n' cheese</h1>
+          <h2 id="chef">por Juliano Vieira</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__imaage-container">
+          <img src="assets/doce.png" alt="doce"/>
+        </div>
+        <div class="card__content">
+          <h1 id="food-plate">Docinhos pão-do-céu</h1>
+          <h2 id="chef">por Ricardo Golvea</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__imaage-container">
+          <img src="assets/asinhas.png" alt="asinhas"/>
+        </div>
+        <div class="card__content">
+          <h1 id="food-plate">Asinhas de frango ao barbecue</h1>
+          <h2 id="chef">por Vania Steroski</h2>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}
