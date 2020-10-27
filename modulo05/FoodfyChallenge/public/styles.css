@@ -101,6 +101,10 @@ main {
   margin: 0;
 }
 
+.card.recipes {
+  cursor: pointer;
+}
+
 .card__imaage-container img {
   width: 100%;
   border-radius: 15px;

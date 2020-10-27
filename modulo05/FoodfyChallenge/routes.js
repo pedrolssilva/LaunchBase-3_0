@@ -1,0 +1,15 @@
+const express = require("express");
+const routes = express.Router();
+
+const general = require("./controllers/general");
+const recipes = require("./controllers/recipes");
+
+routes.get("/", function (req, res) {
+  res.render("main");
+});
+
+routes.get("/about", general.show);
+
+routes.get("/recipes", recipes.index);
+
+module.exports = routes;
