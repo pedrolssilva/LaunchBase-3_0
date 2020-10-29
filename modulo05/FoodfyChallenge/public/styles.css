@@ -2,6 +2,7 @@
 
 :root {
   --color-orange: orange;
+  --primary-color: #6558c3;
 }
 
 * {
@@ -215,4 +216,50 @@ footer {
 footer a {
   font-size: 14px;
   line-height: 24px;
+}
+
+/* ===ADMIN CARDS=== */
+.admin-cards {
+  display: inline-grid;
+  margin-top: 30px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.admin-card {
+  background-color: white;
+
+  /* espaçamento ao centro */
+  margin: 4px auto;
+
+  /* grid dividido ao meio */
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+}
+
+.admin-card__image-container {
+  margin-right: 20px;
+  max-width: 172px;
+  max-height: 80px;
+}
+
+/* .admin-card__image-container img {
+} */
+
+.card__content.admin-card__content h1 {
+  margin: 0 0 5px;
+}
+
+.card__content.admin-card__content h2 {
+  margin: 0 0 10px;
+}
+
+.card__content.admin-card__content:last-child a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
 }
