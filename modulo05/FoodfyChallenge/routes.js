@@ -14,5 +14,6 @@ routes.get("/about", general.show);
 routes.get("/recipes", recipes.index);
 
 routes.get("/admin/recipes", admin.index);
+routes.get("/admin/recipes/:id", admin.show);
 
 module.exports = routes;

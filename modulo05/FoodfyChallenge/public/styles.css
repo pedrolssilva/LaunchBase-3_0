@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 :root {
   --color-orange: orange;
@@ -117,7 +117,8 @@ h2 {
   margin: 0;
 }
 
-.card__content h1 {
+.card__content h1,
+.header-detail-recipe h1 {
   margin: 20px 0 5px 0;
   font-size: 18px;
   line-height: 21px;
@@ -243,9 +244,6 @@ footer a {
   max-height: 80px;
 }
 
-/* .admin-card__image-container img {
-} */
-
 .card__content.admin-card__content h1 {
   margin: 0 0 5px;
 }
@@ -262,4 +260,74 @@ footer a {
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   margin-top: 10px;
+}
+
+/* ===ADMIN CARDS=== */
+.header-detail-recipe {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+button[type="submit"],
+.header-detail-recipe a.button {
+  padding: 8px 32px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 32px;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}
+
+.detail-img-container {
+  margin: 20px 0 50px 0;
+}
+
+.detail-img-container img {
+  width: 100%;
+  border-radius: 15px;
+  max-height: 50vh;
+}
+
+.details-contents-container h1,
+h2 {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.details-contents-container h1 {
+  font-size: 36px;
+  line-height: 42px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.details-contents-container h2 {
+  font-size: 20;
+  line-height: 24px;
+  color: #777;
+  font-weight: normal;
+  margin-bottom: 31px;
+}
+
+.details-contents-container h3 {
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 19px;
+  font-weight: bold;
+}
+
+.details-contents-container h3:not(:first-of-type) {
+  margin-top: 41px;
+}
+
+.details-contents-container p {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: normal;
+  color: #444;
 }
