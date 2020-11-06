@@ -243,6 +243,12 @@ footer a {
   max-width: 172px;
   max-height: 80px;
 }
+.admin-card__image-container img {
+  max-width: inherit;
+  max-height: inherit;
+  height: 100%;
+  width: 100%;
+}
 
 .card__content.admin-card__content h1 {
   margin: 0 0 5px;
@@ -252,9 +258,11 @@ footer a {
   margin: 0 0 10px;
 }
 
-.card__content.admin-card__content:last-child a {
+.card__content.admin-card__content:last-child a,
+.add-button {
   color: var(--primary-color);
   text-decoration: none;
+  background-color: transparent;
   font-size: 14px;
   line-height: 16px;
   font-weight: bold;
@@ -294,7 +302,7 @@ button[type="submit"],
 }
 
 .details-contents-container h1,
-h2 {
+.details-contents-container h2 {
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
@@ -330,4 +338,50 @@ h2 {
   line-height: 28px;
   font-weight: normal;
   color: #444;
+}
+
+/* ===ADMIN CREATE/EDIT=== */
+.details-create-edit .header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.details-create-edit .item {
+  margin-bottom: 30px;
+}
+
+.details-create-edit .item div:first-child {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 10px;
+}
+
+.details-create-edit .item input {
+  width: 100%;
+  border: 1px #ddd solid;
+  border-radius: 4px;
+  height: 49px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 4px;
+}
+
+.array-item div:nth-child(n + 2) {
+  margin-top: 4px;
+}
+
+.details-create-edit .item textarea {
+  padding: 2px 4px;
+  width: 100%;
+  border: 1px #ddd solid;
+  border-radius: 4px;
+  min-height: 49px;
+  resize: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
 }

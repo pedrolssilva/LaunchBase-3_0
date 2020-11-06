@@ -1,0 +1,60 @@
+<div class="header">
+  <h1>
+    {% if recipe %}
+      Editando
+    {% else %}
+      Criando
+    {% endif %}
+    receita
+  </h1>
+  {% if recipe %}
+    <a class="button" href="#">Deletar</a>
+  {% endif %}
+  <button type="submit">Salvar</button>
+</div>
+
+<div class="item">
+  <div>Nome do receita</div>
+  <div>
+    <input type="text" name="foodPlate" value="{{instructor.foodPlate}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Chef</div>
+  <div>
+    <input type="text" name="chef" value="{{instructor.chef}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Imagem da receita</div>
+  <div>
+    <input type="url" name="image_url" placeholder="http://" value="{{recipe.image_url}}">
+  </div>
+</div>
+
+<div class="item" id="ingredients">
+  <div>Ingrediente</div>
+  <div class="array-item ingredient">
+    <input type="text" name="ingredients[]" value="" placeholder="Ingrediente"/>
+  </div>
+  <button type="button" class="add-ingredient add-button">Adicionar novo ingrediente</button>
+</div>
+
+<div class="item" id="prepareMode">
+  <div>Modo de preparo</div>
+  <div class="array-item prepareMode">
+    <input type="text" name="prepareMode[]" value="" placeholder="passo de preparo"/>
+  </div>
+  <button type="button" class="add-prepareMode add-button">Adicionar novo passo</button>
+</div>
+
+<div class="item">
+  <div>Informações adicionais</div>
+  <div>
+    <textarea name="aditionalInfo" rows="12" value="{{recipe.aditionalInfo}}"></textarea>
+  </div>
+</div>
+
+<script src="/create-edit-scripts.js"></script>
