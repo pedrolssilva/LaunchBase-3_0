@@ -106,10 +106,18 @@ main {
   cursor: pointer;
 }
 
+.card__imaage-container {
+  max-width: 555px;
+  max-height: 259px;
+}
+
 .card__imaage-container img {
+  height: 100%;
   width: 100%;
   border-radius: 15px;
   margin: 0;
+  max-width: inherit;
+  max-height: inherit;
 }
 
 .card__content h1,
@@ -268,6 +276,7 @@ footer a {
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 /* ===ADMIN CARDS=== */
@@ -289,6 +298,7 @@ button[type="submit"],
   line-height: 19px;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
+  cursor: pointer;
 }
 
 .detail-img-container {
