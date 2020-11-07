@@ -9,6 +9,19 @@ exports.create = function (req, res) {
   res.render("admin/create");
 };
 
+exports.edit = function (req, res) {
+  const { id } = req.params;
+  const foundRecipe = data.recipes.find(function (recipe) {
+    return recipe.id == id;
+  });
+
+  if (!foundRecipe) {
+    return res.send("Recipe not found!");
+  }
+
+  res.render("admin/edit", { recipe: foundRecipe });
+};
+
 exports.post = function (req, res) {
   const keys = Object.keys(req.body);
 

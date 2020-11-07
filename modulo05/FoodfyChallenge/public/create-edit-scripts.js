@@ -1,27 +1,27 @@
 function addIngredient() {
   const ingredients = document.querySelector(".ingredient");
-  const fieldContainer = document.querySelectorAll(".ingredient");
+  const fieldContainer = ingredients.children;
 
   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
 
-  if (newField.children[0].value == "") {
+  if (newField.value == "") {
     return false;
   }
-  newField.children[0].value = "";
+  newField.value = "";
   ingredients.appendChild(newField);
 }
 
 function addPrepareMode() {
   const preparesMode = document.querySelector(".prepareMode");
-  const fieldContainer = document.querySelectorAll(".prepareMode");
+  const fieldContainer = preparesMode.children;
 
   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
 
-  if (newField.children[0].value == "") {
+  if (newField.value == "") {
     return false;
   }
 
-  newField.children[0].value = "";
+  newField.value = "";
   preparesMode.appendChild(newField);
 }
 

@@ -7,23 +7,25 @@
     {% endif %}
     receita
   </h1>
-  {% if recipe %}
-    <a class="button" href="#">Deletar</a>
-  {% endif %}
-  <button type="submit">Salvar</button>
+  <div class="action-buttons">
+    {% if recipe %}
+      <a class="delete-button" href="#">Deletar</a>
+    {% endif %}
+    <button type="submit">Salvar</button>
+  </div>
 </div>
 
 <div class="item">
   <div>Nome do receita</div>
   <div>
-    <input type="text" name="foodPlate" value="{{instructor.foodPlate}}">
+    <input type="text" name="foodPlate" value="{{recipe.foodPlate}}">
   </div>
 </div>
 
 <div class="item">
   <div>Chef</div>
   <div>
-    <input type="text" name="chef" value="{{instructor.chef}}">
+    <input type="text" name="chef" value="{{recipe.chef}}">
   </div>
 </div>
 
@@ -37,7 +39,13 @@
 <div class="item" id="ingredients">
   <div>Ingrediente</div>
   <div class="array-item ingredient">
-    <input type="text" name="ingredients[]" value="" placeholder="Ingrediente"/>
+    {% if recipe.ingredients.length > 0 %}
+      {% for ingredient in recipe.ingredients%}
+        <input type="text" name="ingredients[]" value="{{ingredient}}" placeholder="Ingrediente"/>
+      {% endfor %}
+    {% else %}
+      <input type="text" name="ingredients[]" placeholder="Ingrediente"/>
+    {% endif %}
   </div>
   <button type="button" class="add-ingredient add-button">Adicionar novo ingrediente</button>
 </div>
@@ -45,7 +53,13 @@
 <div class="item" id="prepareMode">
   <div>Modo de preparo</div>
   <div class="array-item prepareMode">
-    <input type="text" name="prepareMode[]" value="" placeholder="passo de preparo"/>
+    {% if recipe.prepareMode.length > 0 %}
+      {% for prepare in recipe.prepareMode%}
+        <input type="text" name="prepareMode[]" value="{{prepare}}" placeholder="Ingrediente"/>
+      {% endfor %}
+    {% else %}
+      <input type="text" name="prepareMode[]" placeholder="passo de preparo"/>
+    {% endif %}
   </div>
   <button type="button" class="add-prepareMode add-button">Adicionar novo passo</button>
 </div>
@@ -53,7 +67,7 @@
 <div class="item">
   <div>Informações adicionais</div>
   <div>
-    <textarea name="aditionalInfo" rows="12" value="{{recipe.aditionalInfo}}"></textarea>
+    <textarea name="aditionalInfo" rows="12">{{recipe.aditionalInfo}}</textarea>
   </div>
 </div>
 
