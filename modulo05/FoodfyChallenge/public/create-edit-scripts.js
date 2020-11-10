@@ -32,3 +32,19 @@ document
 document
   .querySelector(".add-prepareMode")
   .addEventListener("click", addPrepareMode);
+
+// DELETE CONFIRMATION BLOCK
+const deleteButton = document.querySelector(".delete-button");
+const form = document.querySelector(".create-edit-form");
+const deleteId = document.querySelector("#delete-id").value;
+
+deleteButton.addEventListener("click", function (event) {
+  const confirmation = confirm("Deseja Deletar?");
+
+  if (!confirmation) {
+    event.preventDefault();
+  }
+
+  form.action = `/admin/recipes/${deleteId}?_method=DELETE`;
+  form.submit();
+});

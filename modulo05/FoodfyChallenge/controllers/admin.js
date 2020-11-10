@@ -110,3 +110,35 @@ exports.put = function (req, res) {
     return res.redirect(`/admin/recipes/${id}`);
   });
 };
+
+//delete
+exports.delete = function (req, res) {
+  const { id } = req.params;
+
+  let index = 0;
+
+  const foundRecipe = data.recipes.find(function (recipe, foundIndex) {
+    if (recipe.id == id) {
+      index = foundIndex;
+      return true;
+    }
+  });
+
+  if (!foundRecipe) {
+    return res.send("Recipe not found to be deleted!");
+  }
+
+  const filteredRecipes = data.recipes.filter(function (recipe) {
+    return recipe.id != id;
+  });
+
+  data.recipes = filteredRecipes;
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
+    if (err) {
+      return res.send("Write error");
+    }
+
+    return res.redirect(`/admin/recipes/`);
+  });
+};

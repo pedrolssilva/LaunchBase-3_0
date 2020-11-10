@@ -9,7 +9,8 @@
   </h1>
   <div class="action-buttons">
     {% if recipe %}
-      <a class="delete-button" href="#">Deletar</a>
+      <a class="delete-button">Deletar</a>
+      <input id="delete-id" type="hidden" name="id" value="{{recipe.id}}">
     {% endif %}
     <button type="submit">Salvar</button>
   </div>
