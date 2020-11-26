@@ -1,0 +1,72 @@
+<div class="item">
+  <div>Avatar URL</div>
+  <div>
+    <input type="url" name="avatar_url" placeholder="http://" value="{{student.avatar_url}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Nome</div>
+  <div>
+    <input type="text" name="name" placeholder="Nome do estudante" value="{{student.name}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Email</div>
+  <div>
+    <input type="email" name="email" value="{{student.email}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Data de nascimento</div>
+  <div>
+    <input type="date" name="birth" value="{{student.birth}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Ano escolar</div>
+  <div>
+    <select name="schoolPhase">
+      <optgroup label="Fundamental">
+        <option value="5F" {% if student.schoolPhase == '5F' %} selected="selected" {% endif %}>
+          5º
+        </option>
+        <option value="6F" {% if student.schoolPhase == '6F' %} selected="selected" {% endif %}>
+          6º
+        </option>
+        <option value="7F" {% if student.schoolPhase == '7F' %} selected="selected" {% endif %}>
+          7º
+        </option>
+        <option value="8F" {% if student.schoolPhase == '8F' %} selected="selected" {% endif %}>
+          8º
+        </option>
+        <option value="9F" {% if student.schoolPhase == '9F' %} selected="selected" {% endif %}>
+          9º
+        </option>
+      </optgroup>
+      <optgroup label="Médio">
+        <option value="1M" {% if student.schoolPhase == '1M' %} selected="selected" {% endif %}>
+          1º
+        </option>
+        <option value="2M" {% if student.schoolPhase == '2M' %} selected="selected" {% endif %}>
+          2º
+        </option>
+        <option value="3M" {% if student.schoolPhase == '3M' %} selected="selected" {% endif %}>
+          3º
+        </option>
+      </optgroup>
+    </select>
+  </div>
+</div>
+
+<div class="item">
+  <div>Carga horária semanal</div>
+  <div>
+    <input type="number" name="workload" value="{{student.workload}}">
+  </div>
+</div>
+
+<button type="submit">Salvar</button>
