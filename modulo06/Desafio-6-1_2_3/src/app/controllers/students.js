@@ -1,16 +1,23 @@
 const { age, date, grade } = require("../../lib/utils");
-const student = require("../models/student");
+const Student = require("../models/student");
 module.exports = {
   //index
   index(req, res) {
-    student.all(function (students) {
+    Student.all(function (students) {
+      students.map((student) => {
+        student.school_phase = grade(student.school_phase);
+      });
       return res.render(`students/index`, { students });
     });
   },
 
   //create
   create(req, res) {
-    return res.render("students/create");
+    Student.teachersSelectOptions(function (options) {
+      return res.render("students/create", {
+        teacherOptions: options,
+      });
+    });
   },
 
   //post
@@ -22,14 +29,14 @@ module.exports = {
         return res.send("Please, fill all fields");
       }
     }
-    student.create(req.body, function (student) {
+    Student.create(req.body, function (student) {
       return res.redirect(`/students/${student.id}`);
     });
   },
 
   //show
   show(req, res) {
-    student.find(req.params.id, function (student) {
+    Student.find(req.params.id, function (student) {
       if (!student) {
         return res.send("Student not found!");
       }
@@ -42,13 +49,18 @@ module.exports = {
 
   //edit
   edit(req, res) {
-    student.find(req.params.id, function (student) {
+    Student.find(req.params.id, function (student) {
       if (!student) {
         return res.send("Student not found!");
       }
       student.birth = date(student.birth).iso;
 
-      return res.render("students/edit", { student });
+      Student.teachersSelectOptions(function (options) {
+        return res.render("students/edit", {
+          student,
+          teacherOptions: options,
+        });
+      });
     });
   },
 
@@ -61,14 +73,14 @@ module.exports = {
         return res.send("Please, fill all fields");
       }
     }
-    student.update(req.body, function () {
+    Student.update(req.body, function () {
       return res.redirect(`/students/${req.body.id}`);
     });
   },
 
   //delete
   delete(req, res) {
-    student.delete(req.body.id, function () {
+    Student.delete(req.body.id, function () {
       return res.redirect(`/students`);
     });
   },

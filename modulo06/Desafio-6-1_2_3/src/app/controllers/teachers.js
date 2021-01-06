@@ -1,11 +1,26 @@
 const { age, graduation, date } = require("../../lib/utils");
-const teacher = require("../models/teacher");
+const Teacher = require("../models/teacher");
 module.exports = {
   //index
   index(req, res) {
-    teacher.all(function (teachers) {
-      return res.render(`teachers/index`, { teachers });
-    });
+    const { filter } = req.query;
+
+    if (filter) {
+      Teacher.findBy(filter, function (teachers) {
+        teachers.map((teacher) => {
+          teacher.subjects_taught = teacher.subjects_taught.trim().split(",");
+        });
+
+        return res.render(`teachers/index`, { teachers, filter });
+      });
+    } else {
+      Teacher.all(function (teachers) {
+        teachers.map((teacher) => {
+          teacher.subjects_taught = teacher.subjects_taught.trim().split(",");
+        });
+        return res.render(`teachers/index`, { teachers });
+      });
+    }
   },
 
   //create
@@ -22,14 +37,14 @@ module.exports = {
         return res.send("Please, fill all fields");
       }
     }
-    teacher.create(req.body, function (teacher) {
+    Teacher.create(req.body, function (teacher) {
       return res.redirect(`/teachers/${teacher.id}`);
     });
   },
 
   //show
   show(req, res) {
-    teacher.find(req.params.id, function (teacher) {
+    Teacher.find(req.params.id, function (teacher) {
       if (!teacher) {
         return res.send("Teacher not found!");
       }
@@ -46,7 +61,7 @@ module.exports = {
 
   //edit
   edit(req, res) {
-    teacher.find(req.params.id, function (teacher) {
+    Teacher.find(req.params.id, function (teacher) {
       if (!teacher) {
         return res.send("Teacher not found!");
       }
@@ -66,14 +81,14 @@ module.exports = {
         return res.send("Please, fill all fields");
       }
     }
-    teacher.update(req.body, function () {
+    Teacher.update(req.body, function () {
       return res.redirect(`/teachers/${req.body.id}`);
     });
   },
 
   //delete
   delete(req, res) {
-    teacher.delete(req.body.id, function () {
+    Teacher.delete(req.body.id, function () {
       return res.redirect(`/teachers`);
     });
   },

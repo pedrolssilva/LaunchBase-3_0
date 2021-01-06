@@ -2,7 +2,13 @@
 
 {% block content %}
   <div class="card table-container">
-    <a href="/teachers/create">Novo</a>
+    <div class="header">
+      <a class="button" href="/instructors/create">Novo</a>
+      <form action="/teachers" method="GET">
+        <input type="text" name="filter" placeholder="Professor ou Acompanhamento" value="{{filter}}">
+        <button type="submit">Filtrar</button>
+      </form>
+    </div>
     <table width="100%">
       <thead>
         <tr>
@@ -19,7 +25,7 @@
               {{teacher.name}}
             </td>
             <td>
-              {% for service in teacher.services %}
+              {% for service in teacher.subjects_taught %}
                 <span>{{service}}</span>
               {% endfor %}
             </td>
