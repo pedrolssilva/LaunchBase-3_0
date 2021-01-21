@@ -1,0 +1,13 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <main>
+    <form class="create-edit-form" method="POST" action="/admin/recipes?_method=PUT">
+      <section class="details-create-edit">
+        {% include 'admin/fields.njk'%}
+        <input type="hidden" name="id" value="{{recipe.id}}">
+      </section>
+    </form>
+  </main>
+
+{% endblock content %}
