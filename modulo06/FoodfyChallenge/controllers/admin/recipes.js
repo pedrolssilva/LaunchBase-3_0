@@ -1,12 +1,13 @@
+const { Console } = require("console");
 const fs = require("fs");
-const data = require("../data.json");
+const data = require("../../data.json");
 
 exports.index = function (req, res) {
-  res.render("admin/index", { recipes: data.recipes });
+  res.render("admin/recipes/index", { recipes: data.recipes });
 };
 
 exports.create = function (req, res) {
-  res.render("admin/create");
+  res.render("admin/recipes/create");
 };
 
 exports.edit = function (req, res) {
@@ -19,7 +20,7 @@ exports.edit = function (req, res) {
     return res.send("Recipe not found!");
   }
 
-  res.render("admin/edit", { recipe: foundRecipe });
+  res.render("admin/recipes/edit", { recipe: foundRecipe });
 };
 
 exports.post = function (req, res) {
@@ -68,15 +69,14 @@ exports.show = function (req, res) {
     return res.send("Recipe not found!");
   }
 
-  res.render("admin/show", { recipe: foundRecipe });
+  res.render("admin/recipes/show", { recipe: foundRecipe });
 };
 
 //put
 exports.put = function (req, res) {
   const { id } = req.body;
-
   let index = 0;
-
+  console.log(req.body);
   const foundRecipe = data.recipes.find(function (recipe, foundIndex) {
     if (recipe.id == id) {
       index = foundIndex;

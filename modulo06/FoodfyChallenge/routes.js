@@ -3,7 +3,7 @@ const routes = express.Router();
 
 const general = require("./controllers/general");
 const recipes = require("./controllers/recipes");
-const admin = require("./controllers/admin");
+const adminRecipes = require("./controllers/admin/recipes");
 
 routes.get("/", function (req, res) {
   res.render("main");
@@ -13,13 +13,13 @@ routes.get("/about", general.show);
 
 routes.get("/recipes", recipes.index);
 
-routes.get("/admin/recipes", admin.index);
-routes.get("/admin/recipes/create", admin.create);
-routes.get("/admin/recipes/:id", admin.show);
-routes.get("/admin/recipes/:id/edit", admin.edit);
+routes.get("/admin/recipes", adminRecipes.index);
+routes.get("/admin/recipes/create", adminRecipes.create);
+routes.get("/admin/recipes/:id", adminRecipes.show);
+routes.get("/admin/recipes/:id/edit", adminRecipes.edit);
 
-routes.post("/admin/recipes", admin.post);
-routes.put("/admin/recipes", admin.put);
-routes.delete("/admin/recipes/:id", admin.delete);
+routes.post("/admin/recipes", adminRecipes.post);
+routes.put("/admin/recipes", adminRecipes.put);
+routes.delete("/admin/recipes/:id", adminRecipes.delete);
 
 module.exports = routes;
