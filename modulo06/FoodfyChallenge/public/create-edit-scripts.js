@@ -40,9 +40,9 @@ const deleteId = document.querySelector("#delete-id").value;
 
 deleteButton.addEventListener("click", function (event) {
   const confirmation = confirm("Deseja Deletar?");
-
   if (!confirmation) {
     event.preventDefault();
+    return;
   }
 
   form.action = `/admin/recipes/${deleteId}?_method=DELETE`;

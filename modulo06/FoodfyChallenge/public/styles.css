@@ -396,6 +396,7 @@ button[type="submit"],
 }
 
 a.delete-button {
+  cursor: pointer;
   padding: 8px 32px;
   background-color: #dc4747;
   color: white;
