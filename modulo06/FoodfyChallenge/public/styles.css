@@ -18,7 +18,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-header,
 main {
   margin: 0 100px;
 }
@@ -29,7 +28,7 @@ main {
 
 .links {
   margin-bottom: 30px;
-  margin-top: 20px;
+  padding: 20px 0 20px 100px;
   display: flex;
 }
 
@@ -41,7 +40,8 @@ main {
   margin-right: 30px;
 }
 
-.links a:hover {
+.links a:hover,
+.links.admin a:hover {
   color: var(--color-orange);
   transition: color 200ms;
 }
@@ -211,6 +211,7 @@ h2 {
   visibility: visible;
 }
 
+/* === FOOTER === */
 footer {
   display: flex;
   align-items: center;
@@ -225,6 +226,23 @@ footer {
 footer a {
   font-size: 14px;
   line-height: 24px;
+}
+
+/* ===ADMIN LAYOUT=== */
+.links.admin {
+  background: #111;
+}
+
+.links.admin a {
+  color: #999999;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.links.admin a.active {
+  font-weight: bold;
+  color: #ffffff;
 }
 
 /* ===ADMIN CARDS=== */

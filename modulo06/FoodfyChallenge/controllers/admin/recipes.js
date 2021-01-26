@@ -76,7 +76,6 @@ exports.show = function (req, res) {
 exports.put = function (req, res) {
   const { id } = req.body;
   let index = 0;
-  console.log(req.body);
   const foundRecipe = data.recipes.find(function (recipe, foundIndex) {
     if (recipe.id == id) {
       index = foundIndex;
