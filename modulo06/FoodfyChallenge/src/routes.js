@@ -1,9 +1,9 @@
 const express = require("express");
 const routes = express.Router();
 
-const general = require("./controllers/general");
-const recipes = require("./controllers/recipes");
-const adminRecipes = require("./controllers/admin/recipes");
+const general = require("./app/controllers/general");
+const recipes = require("./app/controllers/recipes");
+const adminRecipes = require("./app/controllers/admin/recipes");
 
 routes.get("/", function (req, res) {
   res.render("main");
