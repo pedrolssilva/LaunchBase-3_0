@@ -1,0 +1,30 @@
+{% extends "admin/adminLayout.njk"%}
+
+{% block head %}
+  <title>Foodfy -Admin Chef Detail</title>
+{% endblock %}
+
+{% block content %}
+
+  <main>
+    <div class="header-detail-admin">
+      <h1>Chef:
+        {{chef.name}}</h1>
+      <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
+    </div>
+    <div class="detail-img-container">
+      <img class="admin-chef-avatar" src="{{chef.avatar_url}}" alt="chef avatar">
+    </div>
+    <div class="details-contents-container">
+      <h1>{{chef.name}}</h1>
+      <h2>4 receitas</h2>
+
+      <h3>Receitas</h3>
+      {% for ingredient in chef.ingredients %}
+        <p>-
+          {{ingredient}}</p>
+      {% endfor %}
+    </div>
+  </main>
+
+{% endblock %}

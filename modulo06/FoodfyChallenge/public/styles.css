@@ -298,14 +298,16 @@ footer a {
 }
 
 /* ===ADMIN CARDS=== */
-.header-detail-recipe {
+.header-detail-recipe,
+.header-detail-admin {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
 }
 
 button[type="submit"],
-.header-detail-recipe a.button {
+.header-detail-recipe a.button,
+.header-detail-admin a.button {
   padding: 8px 32px;
   background-color: var(--primary-color);
   color: white;
@@ -343,7 +345,7 @@ button[type="submit"],
 }
 
 .details-contents-container h2 {
-  font-size: 20;
+  font-size: 20px;
   line-height: 24px;
   color: #777;
   font-weight: normal;
@@ -429,4 +431,22 @@ a.delete-button {
 
 .header div a:first-child {
   margin-right: 10px;
+}
+
+/* ADMIN CHEF */
+.header-detail-admin h1 {
+  margin: 20px 0 5px 0;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}
+
+.detail-img-container img.admin-chef-avatar {
+  border-radius: 50%;
+  max-width: 200px;
+  max-height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

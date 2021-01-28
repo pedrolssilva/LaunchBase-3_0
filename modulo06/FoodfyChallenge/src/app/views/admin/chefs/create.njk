@@ -1,0 +1,12 @@
+{% extends "admin/adminLayout.njk" %}
+
+{% block content %}
+  <main>
+    <form class="create-edit-form" method="POST" action="/admin/chefs">
+      <section class="details-create-edit">
+        {% include 'admin/chefs/fields.njk'%}
+      </section>
+    </form>
+  </main>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+<div class="header">
+  <h1>
+    {% if chef %}
+      Editando
+    {% else %}
+      Criando
+    {% endif %}
+    chef
+  </h1>
+  <div class="action-buttons">
+    {% if chef %}
+      <a class="delete-button">Deletar</a>
+      <input id="delete-id" type="hidden" name="id" value="{{chef.id}}">
+    {% endif %}
+    <button type="submit">Salvar</button>
+  </div>
+</div>
+
+<div class="item">
+  <div>Nome</div>
+  <div>
+    <input type="text" name="name" value="{{chef.name}}">
+  </div>
+</div>
+
+<div class="item">
+  <div>Avatar</div>
+  <div>
+    <input type="url" name="avatar_url" placeholder="http://" value="{{chef.avatar_url}}">
+  </div>
+</div>
