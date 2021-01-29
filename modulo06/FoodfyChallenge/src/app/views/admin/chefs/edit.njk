@@ -2,10 +2,9 @@
 
 {% block content %}
   <main>
-    <form class="create-edit-form" method="POST" action="/admin/recipes?_method=PUT">
+    <form class="create-edit-form" method="POST" action="/admin/chefs?_method=PUT">
       <section class="details-create-edit">
-        {% include 'admin/recipes/fields.njk'%}
-        {# <input type="hidden" name="id" value="{{recipe.id}}"> #}
+        {% include 'admin/chefs/fields.njk'%}
       </section>
     </form>
   </main>

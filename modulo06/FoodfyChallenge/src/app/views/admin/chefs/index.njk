@@ -8,22 +8,18 @@
 
   <main>
     <h1 class="main-title">
-      Gerenciar Receitas
+      Gerenciar chefs
     </h1>
-    <section class="admin-cards">
+    <section class="admin-cards-chefs">
 
-      {% for recipe in recipes %}
+      {% for chef in chefs %}
         <div class="admin-card">
           <div class="card__imaage-container admin-card__image-container">
-            <img id="admin-card-image" src="{{recipe.image_url}}" alt="Plate image"/>
+            <img class="chef-avatar" id="admin-card-image" src="{{chef.avatar_url}}" alt="Plate image"/>
           </div>
           <div class="card__content admin-card__content">
-            <h1 id="food-plate">{{recipe.foodPlate}}</h1>
-            <h2 id="chef">
-              por
-              {{recipe.chef}}
-            </h2>
-            <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
+            <h1 id="chef">{{chef.name}}</h1>
+            <a href="/admin/chefs/{{chef.id}}">Visualizar</a>
           </div>
         </div>
       {% endfor %}

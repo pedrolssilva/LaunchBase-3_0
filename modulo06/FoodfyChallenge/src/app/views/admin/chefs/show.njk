@@ -17,7 +17,8 @@
     </div>
     <div class="details-contents-container">
       <h1>{{chef.name}}</h1>
-      <h2>4 receitas</h2>
+      <h2>{{chef.total_recipes}}
+        receita(s)</h2>
 
       <h3>Receitas</h3>
       {% for ingredient in chef.ingredients %}

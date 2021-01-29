@@ -253,7 +253,8 @@ footer a {
   gap: 20px;
 }
 
-.admin-card {
+.admin-card,
+.admin-cards-chefs {
   background-color: white;
 
   /* espaçamento ao centro */
@@ -262,6 +263,23 @@ footer a {
   /* grid dividido ao meio */
   display: grid;
   grid-template-columns: 1fr 1.3fr;
+}
+
+.admin-cards-chefs {
+  display: inline-grid;
+  margin-top: 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.admin-card__image-container img.chef-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.admin-card__content {
+  padding-top: 5px;
 }
 
 .admin-card__image-container {

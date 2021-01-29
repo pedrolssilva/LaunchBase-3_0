@@ -1,9 +1,14 @@
 const { date } = require("../../../lib/utils");
+const chef = require("../../models/chef");
 const Chef = require("../../models/chef");
 
 module.exports = {
   //index
-  index(req, res) {},
+  index(req, res) {
+    Chef.all(function (chefs) {
+      return res.render(`admin/chefs/index`, { chefs });
+    });
+  },
 
   // create
   create(req, res) {
@@ -31,13 +36,19 @@ module.exports = {
         return res.send("chef not found!");
       }
       chef.created_at = date(chef.created_at).format;
-
       return res.render("admin/chefs/show", { chef });
     });
   },
 
   //edit
-  edit(req, res) {},
+  edit(req, res) {
+    Chef.find(req.params.id, function (chef) {
+      if (!chef) {
+        return res.send("Chef not found!");
+      }
+      return res.render("admin/chefs/edit", { chef });
+    });
+  },
 
   //put
   put(req, res) {
