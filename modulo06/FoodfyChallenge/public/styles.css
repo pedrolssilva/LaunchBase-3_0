@@ -408,21 +408,22 @@ button[type="submit"],
   margin-bottom: 10px;
 }
 
-.details-create-edit .item input {
+.details-create-edit .item input,
+.details-create-edit .item select {
   width: 100%;
   border: 1px #ddd solid;
   border-radius: 4px;
   height: 49px;
   font-size: 16px;
   line-height: 24px;
-  padding: 0 4px;
+  box-sizing: border-box;
+  padding-left: 8px;
 }
 .array-item input:nth-child(n + 2) {
   margin-top: 4px;
 }
 
 .details-create-edit .item textarea {
-  padding: 2px 4px;
   width: 100%;
   border: 1px #ddd solid;
   border-radius: 4px;
@@ -431,6 +432,12 @@ button[type="submit"],
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 24px;
+  box-sizing: border-box;
+  padding-left: 8px;
+}
+
+.details-create-edit .item select {
+  background-color: #ffffff;
 }
 
 a.delete-button {

@@ -9,15 +9,15 @@
   <main>
     <div class="header-detail-recipe">
       <h1>Receita:
-        {{recipe.foodPlate}}</h1>
+        {{recipe.title}}</h1>
       <a class="button" href="/admin/recipes/{{recipe.id}}/edit">Editar Receita</a>
     </div>
     <div class="detail-img-container">
       <img src="{{recipe.image_url}}" alt="plate food image">
     </div>
     <div class="details-contents-container">
-      <h1>{{recipe.foodPlate}}</h1>
-      <h2>{{recipe.chef}}</h2>
+      <h1>{{recipe.title}}</h1>
+      <h2>{{recipe.chef_name}}</h2>
 
       <h3>Ingredientes</h3>
       {% for ingredient in recipe.ingredients %}
@@ -26,13 +26,13 @@
       {% endfor %}
 
       <h3>Modo de Preparo</h3>
-      {% for prepareStep in recipe.prepareMode %}
+      {% for prepareStep in recipe.preparation %}
         <p>-
           {{prepareStep}}</p>
       {% endfor %}
 
       <h3>informações adicionais</h3>
-      <p >{{recipe.aditionalInfo}}</p>
+      <p >{{recipe.information}}</p>
 
     </div>
 
