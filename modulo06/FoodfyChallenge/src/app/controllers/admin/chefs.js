@@ -36,7 +36,10 @@ module.exports = {
         return res.send("chef not found!");
       }
       chef.created_at = date(chef.created_at).format;
-      return res.render("admin/chefs/show", { chef });
+
+      Chef.findRecipesByChefId(chef.id, function (recipes) {
+        return res.render("admin/chefs/show", { chef, recipes });
+      });
     });
   },
 
@@ -59,6 +62,10 @@ module.exports = {
         return res.send("Please, fill all fields");
       }
     }
+
+    Chef.update(req.body, function () {
+      return res.redirect(`/admin/chefs/${req.body.id}`);
+    });
   },
 
   //delete

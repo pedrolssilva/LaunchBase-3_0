@@ -19,13 +19,35 @@
       <h1>{{chef.name}}</h1>
       <h2>{{chef.total_recipes}}
         receita(s)</h2>
-
-      <h3>Receitas</h3>
-      {% for ingredient in chef.ingredients %}
-        <p>-
-          {{ingredient}}</p>
-      {% endfor %}
     </div>
+
+    {% if recipes.length > 0 %}
+      <div>
+        <h1 class="main-title">
+          Receitas
+        </h1>
+        <section class="admin-cards">
+
+          {% for recipe in recipes %}
+            <div class="admin-card">
+              <div class="card__imaage-container admin-card__image-container">
+                <img id="admin-card-image" src="{{recipe.image_url}}" alt="Plate image"/>
+              </div>
+              <div class="card__content admin-card__content">
+                <h1 id="food-plate">{{recipe.title}}</h1>
+                <h2 id="chef">
+                  por
+                  {{chef.name}}
+                </h2>
+                <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
+              </div>
+            </div>
+          {% endfor %}
+
+        </section>
+      </div>
+    {% endif %}
+
   </main>
 
 {% endblock %}
