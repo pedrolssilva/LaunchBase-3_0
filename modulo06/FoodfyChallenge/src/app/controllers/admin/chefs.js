@@ -70,8 +70,15 @@ module.exports = {
 
   //delete
   delete(req, res) {
-    Chef.delete(req.body.id, function () {
-      return res.redirect(`/admin/chefs`);
+    const { id } = req.body;
+    Chef.findRecipesByChefId(id, function (recipes) {
+      if (recipes.length > 0) {
+        return res.send("Chefs has recipes and can't to be deleted!");
+      }
+
+      Chef.delete(id, function () {
+        return res.redirect(`/admin/chefs`);
+      });
     });
   },
 };

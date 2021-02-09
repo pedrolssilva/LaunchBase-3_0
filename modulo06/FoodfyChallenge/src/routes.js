@@ -14,6 +14,10 @@ routes.get("/about", general.show);
 
 routes.get("/recipes", recipes.index);
 
+routes.get("/admin", function (req, res) {
+  return res.redirect("/admin/recipes");
+});
+
 routes.get("/admin/recipes", adminRecipes.index);
 routes.get("/admin/recipes/create", adminRecipes.create);
 routes.get("/admin/recipes/:id", adminRecipes.show);
