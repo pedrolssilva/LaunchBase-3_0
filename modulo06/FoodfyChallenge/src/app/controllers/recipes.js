@@ -1,5 +1,7 @@
-const data = require("../data.json");
+const Recipe = require("../models/recipe");
 
 exports.index = function (req, res) {
-  res.render("recipes/recipes", { recipes: data.recipes });
+  Recipe.all(function (recipes) {
+    return res.render("recipes/recipes", { recipes });
+  });
 };

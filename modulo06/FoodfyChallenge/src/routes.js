@@ -3,6 +3,7 @@ const routes = express.Router();
 
 const general = require("./app/controllers/general");
 const recipes = require("./app/controllers/recipes");
+const chefs = require("./app/controllers/chefs");
 const adminRecipes = require("./app/controllers/admin/recipes");
 const adminChefs = require("./app/controllers/admin/chefs");
 
@@ -13,6 +14,7 @@ routes.get("/", function (req, res) {
 routes.get("/about", general.show);
 
 routes.get("/recipes", recipes.index);
+routes.get("/chefs", chefs.index);
 
 routes.get("/admin", function (req, res) {
   return res.redirect("/admin/recipes");
