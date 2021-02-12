@@ -11,16 +11,23 @@
 
   <body>
     <header>
-      <nav class="links">
-        <div class="logo">
-          <a href="/">
-            <img src="/assets/logo.png" alt="Foodfy logo"/>
-          </a>
-        </div>
-        <a href="/about">Sobre</a>
-        <a href="/recipes">Receitas</a>
-        <a href="/chefs">Chefs</a>
-      </nav>
+      <div class="navigation-header">
+        <nav class="links">
+          <div class="logo">
+            <a href="/">
+              <img src="/assets/logo.png" alt="Foodfy logo"/>
+            </a>
+          </div>
+          <a href="/about">Sobre</a>
+          <a href="/recipes">Receitas</a>
+          <a href="/chefs">Chefs</a>
+        </nav>
+        <form action="/searchRecipe" method="GET">
+          <button type="submit">Buscar</button>
+          <input type="text" name="filter" placeholder="Buscar uma Receita" value="{{filter}}">
+        </form>
+      </div>
+
     </header>
 
     {% block content %}{% endblock %}
