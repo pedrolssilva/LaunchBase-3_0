@@ -14,6 +14,8 @@ routes.get("/", function (req, res) {
 routes.get("/about", general.show);
 
 routes.get("/recipes", recipes.index);
+routes.get("/searchRecipes", recipes.findRecipes);
+
 routes.get("/chefs", chefs.index);
 
 routes.get("/admin", function (req, res) {

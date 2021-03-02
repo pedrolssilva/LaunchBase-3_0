@@ -64,7 +64,6 @@ module.exports = {
       }
     );
   },
-  findBy(filter, callback) {},
   update(data, callback) {
     const query = `
     UPDATE recipes SET
@@ -113,5 +112,36 @@ module.exports = {
       callback(results.rows);
     });
   },
-  paginate(params) {},
+  findByName(params) {
+    const { filter, limit, offset, callback } = params;
+
+    let query = "",
+      filterQuery = "",
+      totalQuery = `(
+      SELECT count(*) FROM recipes) AS total`;
+
+    if (filter) {
+      filterQuery = `${query} 
+      WHERE recipes.title ILIKE '%${filter}%'`;
+
+      totalQuery = `(
+        SELECT count(*) from recipes
+        ${filterQuery}
+      ) AS total`;
+    }
+
+    query = `
+    SELECT recipes.*, ${totalQuery}, chefs.name as chef_name
+    FROM recipes
+    LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+    ${filterQuery} 
+    LIMIT $1 OFFSET $2`;
+
+    db.query(query, [limit, offset], function (err, results) {
+      if (err) {
+        throw `Database error: ${err}`;
+      }
+      callback(results.rows);
+    });
+  },
 };
