@@ -13,7 +13,7 @@
 </div>
 
 <div class="item">
-  <div>Nome</div>
+  <div>Título</div>
   <div>
     <input type="text" name="name" placeholder="Digite o título do anúncio" value="{{product.name}}">
   </div>
@@ -31,7 +31,7 @@
 <div class="item">
   <div>Valor</div>
   <div>
-    <input type="text" name="price" placeholder="Preço do Produto" value="{{product.price}}" faremos="faremos" uma="uma" mascara="mascara" de="de" dinheiro/reais="dinheiro/reais">
+    <input type="text" name="price" placeholder="Preço do Produto" value="{{product.price}}" onkeydown="Mask.apply(this, 'formatBRL')">
   </div>
 </div>
 
