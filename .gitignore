@@ -2,3 +2,4 @@ Works/*
 **node_modules/
 **/public/images/
 **data.json
+**.vscode/
