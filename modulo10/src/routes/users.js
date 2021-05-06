@@ -10,13 +10,13 @@ const UserController = require("../app/controllers/UserController");
 // routes.post("/logout", SessionController.logout);
 
 // // reset password / forgot
-// routes.get("/forgot-password", SessionController.forgotForm);
+// routes.get("/forgot-password", SessionControll er.forgotForm);
 // routes.get("/password-reset", SessionController.resetForm);
 // routes.post("/forgot-passwor", SessionController.forgot);
 // routes.post("/password-reset", SessionController.reset);
 
 // // user register UserController
-// routes.get("/register", UserController.registerForm);
+routes.get("/register", UserController.registerForm);
 // routes.post("/register", UserController.post);
 
 // routes.get("/", UserController.show);
