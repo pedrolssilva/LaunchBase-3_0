@@ -27,7 +27,11 @@ module.exports = {
       return res.send("Please, send at least one image");
     }
 
-    let results = await Product.create(req.body);
+    let results = await Product.create({
+      ...req.body,
+      user_id: req.session.userId,
+    });
+
     const productId = results.rows[0].id;
 
     const filesPromise = req.files.map((file) =>
