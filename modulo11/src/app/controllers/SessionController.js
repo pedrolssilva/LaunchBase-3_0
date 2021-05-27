@@ -1,3 +1,8 @@
+const User = require("../models/User");
+
+const crypto = require("crypto");
+const mailer = require("../../lib/mailer");
+
 module.exports = {
   loginForm(req, res) {
     res.render("session/login");
@@ -9,5 +14,51 @@ module.exports = {
   logout(req, res) {
     req.session.destroy();
     return res.redirect("/");
+  },
+  forgotForm(req, res) {
+    res.render("session/forgot-password");
+  },
+  async forgot(req, res) {
+    const user = req.user;
+
+    try {
+      //um token para esse usuario
+      const token = crypto.randomBytes(20).toString("hex");
+
+      //criar uma expiraçao do token
+      let now = new Date();
+      now = now.setHours(now.getHours() + 1);
+
+      await User.update(user.id, {
+        reset_token: token,
+        reset_token_expires: now,
+      });
+
+      //enviar um e-mail com um link de recuperaçao de senha
+      await mailer.sendMail({
+        to: user.email,
+        from: "no-reply@launchstore.com.br",
+        subject: "Recuperação de senha",
+        html: `
+        <h2>Perdeu a chave?</h2>
+        <p>Não se preocupe, clique no link abaixo para recuperar sua senha</p>
+        <p>
+          <a href="http://localhost:3000/users/password-reset?token=${token}" target="_blank">
+            RECUPERAR SENHA
+          </a>
+        </p>
+      `,
+      });
+
+      //avisar o usuario que enviamos o email
+      return res.render("session/forgot-password", {
+        success: "Verifique seu e-mail para resetar sua senha!",
+      });
+    } catch (error) {
+      console.error(error);
+      return res.render("session/forgot-password", {
+        error: "Erro inesperado, tente novamente!",
+      });
+    }
   },
 };
