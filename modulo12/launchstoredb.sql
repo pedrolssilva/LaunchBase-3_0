@@ -1,3 +1,6 @@
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
 DROP DATABASE IF EXISTS launchstoredb;
 CREATE DATABASE launchstoredb;
 
@@ -50,13 +53,13 @@ CREATE TABLE "users" (
 ALTER TABLE "products" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
 -- create procedure
-CREATE FUNCTION trigget_set_timestamp()
+CREATE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
 BEGIN
   NEW.updated_at = NOW();
   RETURN NEW;
 END
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql; 
 
 -- auto updated_at products
 CREATE TRIGGER set_timestamp
@@ -88,15 +91,15 @@ ALTER TABLE "users" ADD COLUMN  reset_token_expires text;
 
 -- cascade effect when delete user and products
 ALTER TABLE "products"
-DROP CONSTRAINT product_user_id_fkey
-ADD CONSTRAINT product_user_id_fkey
+DROP CONSTRAINT products_user_id_fkey,
+ADD CONSTRAINT products_user_id_fkey
 FOREIGN KEY ("user_id")
 REFERENCES "users" ("id")
 ON DELETE CASCADE;
 
-ALTER TABLE " files"
-DROP CONSTRAINT files_product_id_fkey
+ALTER TABLE "files"
+DROP CONSTRAINT files_product_id_fkey,
 ADD CONSTRAINT files_product_id_fkey
-FOREIGN KEY ("product_id ")
+FOREIGN KEY ("product_id")
 REFERENCES "products" ("id")
 ON DELETE CASCADE;
