@@ -5,7 +5,7 @@ function find(filters, table) {
 
   if (filters) {
     Object.keys(filters).map((key) => {
-      query += ` ${key}`;
+      query += ` ${key} `;
 
       Object.keys(filters[key]).map((field) => {
         query += `${field} = '${filters[key][field]}'`;

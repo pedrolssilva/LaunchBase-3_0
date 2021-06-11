@@ -1,9 +1,9 @@
+const { unlinkSync } = require("fs");
 const Category = require("../models/Category");
 const Product = require("../models/Product");
 const File = require("../models/File");
 
 const { formatPrice, date } = require("../../lib/utils");
-const { delete } = require("../models/Category");
 
 module.exports = {
   async create(req, res) {
@@ -52,7 +52,7 @@ module.exports = {
       });
 
       const filesPromise = req.files.map((file) =>
-        File.create({ ...file, product_id })
+        File.create({ name: file.filename, path: file.path, product_id })
       );
 
       await Promise.all(filesPromise);
@@ -65,7 +65,6 @@ module.exports = {
   async show(req, res) {
     try {
       const product = await Product.find(req.params.id);
-
       if (!product) {
         return res.send("Product not found!");
       }
@@ -174,9 +173,19 @@ module.exports = {
       console.error(error);
     }
   },
-  async delete(req, res){
-    await Product.delete(req.body.id)
+  async delete(req, res) {
+    const files = await Product.files(req.body.id);
 
-    return res.redirect('/products/create')
-  }
+    await Product.delete(req.body.id);
+
+    files.map((file) => {
+      try {
+        unlinkSync(file.path);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    return res.redirect("/products/create");
+  },
 };
