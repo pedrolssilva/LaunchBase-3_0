@@ -30,6 +30,17 @@ module.exports = {
 
     return res.render("orders/index", { orders });
   },
+  async sales(req, res) {
+    const sales = await LoadOrderSerivce.load("orders", {
+      where: { seller_id: req.session.userId },
+    });
+    return res.render("orders/sales", { sales });
+  },
+  async show(req, res) {
+    const { id } = req.params;
+    const order = await LoadOrderSerivce.load("order", { where: { id } });
+    return res.render("orders/details", { order });
+  },
   async post(req, res) {
     try {
       // pegar os produtos do carrinho
@@ -91,12 +102,5 @@ module.exports = {
       console.error(error);
       return res.render("orders/error");
     }
-  },
-  async sales(req, res) {
-    const sales = await LoadOrderSerivce.load("orders", {
-      where: { seller_id: req.session.userId },
-    });
-
-    return res.render("orders/sales", { sales });
   },
 };
